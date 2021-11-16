@@ -1,24 +1,18 @@
-class Persona(object):    
+class Persona(object):
 
     def __init__(self, dni, nombre, apellido, anioNacimiento, sexo):
         # Constructor de clase Persona
         self.dni = dni
         self.nombre = nombre
         self.apellido = apellido
-        self.sexo = sexo
-        self.anioNacimiento = anioNacimiento
+        self.sexo = str(sexo)
+        self.anioNacimiento = int(anioNacimiento)
 
-    def __str__(self):
-        # Devuelve una cadena representativa de Persona
-        return "%s: %s, %s %s, %s, %s." % (
-            self.__doc__[25:34], str(self.dni), self.nombre, 
-            self.apellido, str(self.anioNacimiento), self.getGenero(self.sexo))
-
-    def getGenero(self, sexo):        
+    def getGenero(self, sexo):
         genero = ('Masculino','Femenino')
-        if sexo == "M":
+        if sexo.upper() == "M":
             return genero[0]
-        elif sexo == "F":
+        elif sexo.upper() == "F":
             return genero[1]
         else:
             return "Desconocido"
@@ -51,16 +45,42 @@ class estudiante(Persona):
         self.carrera = carrera
         self.lugarDeEstudio = lugarDeEstudio
 
-
     def mostrarDatos(self):
-        return "Estudiante:" +self.nombre+", "+self.apellido+", carrera:" +self.carrera+", lugar De Estudio:" +self.lugarDeEstudio+"."
+        return "Estudiante:" + self.nombre + " " + self.apellido + "\nCarrera: " + self.carrera + "\nLugar De Estudio: " + self.lugarDeEstudio +"."
 
-persona1 = Persona(12345678, "Leonardo", "Caballero", 1992, "M")
 
-print(persona1.getGenero(persona1.sexo))
+def cargarEstudiante():
+    print("Carga de datos del estudiante")
+    nombre = input("Nombre: ")
+    apellido = input("Apellido: ")
+    sexo = input("Sexo: ")
+    dni = input("DNI: ")
+    anioNacimiento = int(input("Año de nacimiento: "))
+    carrera = input("Carrera:")
+    lugarDeEstudio = input("Lugar de estudio: ")
+    return estudiante(nombre, apellido, dni, anioNacimiento, sexo, carrera, lugarDeEstudio)
 
-estudiante1 = estudiante("11234567", "Jen", "Paz", 1968, "M", "compu", "ispc")
+def ejecutarOpciones(estudiante2):
+    opcion = int(input("Que desea realizar?\n1- Ver a que generacion pertenece el estudiante.\n2- Ver los datos del estudiante.\n"))
+    while opcion == 1 or opcion == 2 or opcion == 3:
+        if (opcion == 1):
+            print(estudiante2.getGeneracion(estudiante2.anioNacimiento))
+        elif (opcion == 2):
+            print(estudiante2.mostrarDatos())
+        elif (opcion == 3):
+            cargarEstudiante()
 
-print(estudiante1.getGeneracion(estudiante1.anioNacimiento))
+        opcion = int(input("Desea realizar algo mas?\n1- Ver a que generacion pertenece el estudiante.\n2- Ver los datos del estudiante.\n3- Cargar otro estudiante.\n0- Salir\n"))
 
-print(estudiante1.mostrarDatos())
+estudiante2 = cargarEstudiante()
+ejecutarOpciones(estudiante2)
+
+# persona1 = Persona(12345678, "Leonardo", "Caballero", 1965, "m")
+
+# print(persona1.getGenero(persona1.sexo))
+
+# estudiante1 = estudiante("11234567", "Jen", "Paz", 1968, "M", "compu", "ispc")
+
+# print(estudiante1.getGeneracion(estudiante1.anioNacimiento))
+
+# print(estudiante1.mostrarDatos())
