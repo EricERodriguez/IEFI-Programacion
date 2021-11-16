@@ -52,7 +52,7 @@ class estudiante(Persona):
         self.lugarDeEstudio = lugarDeEstudio
 
 
-    def mostrarDatos(self, nombre, apellido, carrera, lugarDeEstudio):
+    def mostrarDatos(self):
         return "Estudiante:" +self.nombre+", "+self.apellido+", carrera:" +self.carrera+", lugar De Estudio:" +self.lugarDeEstudio+"."
 
 persona1 = Persona(12345678, "Leonardo", "Caballero", 1992, "M")
@@ -63,4 +63,4 @@ estudiante1 = estudiante("11234567", "Jen", "Paz", 1968, "M", "compu", "ispc")
 
 print(estudiante1.getGeneracion(estudiante1.anioNacimiento))
 
-print(estudiante1.mostrarDatos("M", "compu", "ispc", "ispc"))
+print(estudiante1.mostrarDatos())
