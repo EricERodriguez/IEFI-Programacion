@@ -36,9 +36,9 @@ class Persona(object):
 class estudiante(Persona):
     # Clase que representa a un estudiante
 
-    def __init__(self, dni, nombre, apellido, anioNacimiento, sexo, carrera, lugarDeEstudio):
+    def __init__(self, nombre, apellido, dni, anioNacimiento, sexo, carrera, lugarDeEstudio):
 
-        # Invoca al constructor de clase Persona
+        # Invoco al constructor de clase Persona
         Persona.__init__(self, dni, nombre, apellido, anioNacimiento, sexo)
 
         # Nuevos atributos
@@ -46,7 +46,7 @@ class estudiante(Persona):
         self.lugarDeEstudio = lugarDeEstudio
 
     def mostrarDatos(self):
-        return "Estudiante:" + self.nombre + " " + self.apellido + "\nCarrera: " + self.carrera + "\nLugar De Estudio: " + self.lugarDeEstudio +"."
+        return "Estudiante: " + self.nombre + " " + self.apellido + "\nCarrera: " + self.carrera + "\nLugar De Estudio: " + self.lugarDeEstudio +"."
 
 
 def cargarEstudiante():
@@ -56,11 +56,12 @@ def cargarEstudiante():
     sexo = input("Sexo: ")
     dni = input("DNI: ")
     anioNacimiento = int(input("Año de nacimiento: "))
-    carrera = input("Carrera:")
-    lugarDeEstudio = input("Lugar de estudio: ")
+    carrera = input("Carrera: ")
+    lugarDeEstudio = input("Lugar de estudio: ")    
+    print("-----------------------------")
     return estudiante(nombre, apellido, dni, anioNacimiento, sexo, carrera, lugarDeEstudio)
 
-def ejecutarOpciones(estudiante2):
+def ejecutarOpciones(estudiante2):    
     opcion = int(input("Que desea realizar?\n1- Ver a que generacion pertenece el estudiante.\n2- Ver los datos del estudiante.\n"))
     while opcion == 1 or opcion == 2 or opcion == 3:
         if (opcion == 1):
@@ -69,7 +70,7 @@ def ejecutarOpciones(estudiante2):
             print(estudiante2.mostrarDatos())
         elif (opcion == 3):
             cargarEstudiante()
-
+        print("-----------------------------")
         opcion = int(input("Desea realizar algo mas?\n1- Ver a que generacion pertenece el estudiante.\n2- Ver los datos del estudiante.\n3- Cargar otro estudiante.\n0- Salir\n"))
 
 estudiante2 = cargarEstudiante()
